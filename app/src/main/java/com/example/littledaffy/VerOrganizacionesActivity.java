@@ -68,6 +68,8 @@ public class VerOrganizacionesActivity extends AppCompatActivity implements OnMa
         toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.verde), PorterDuff.Mode.SRC_ATOP);
         setSupportActionBar(toolbar);
 
+	//ESTO ES PRUEBA PARA VER TODO
+
         //GOOGLE MAPS
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
