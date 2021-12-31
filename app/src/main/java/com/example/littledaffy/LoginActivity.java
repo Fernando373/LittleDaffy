@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.facebook.login.LoginResult;
@@ -43,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager viewPager;
     FloatingActionButton google;
-    Button login;
+    private Button loginb;
     float v=0;
     private CallbackManager mCallbackManager;
     private FirebaseAuth mFirebaseAuth;
@@ -51,12 +52,16 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener authStateListener;
     private AccessTokenTracker accessTokenTracker;
     private static final String TAG = "Autorizado";
+    //login
+    private String em = "";
+    private String pa = "";
+    private EditText coreo;
+    private EditText pass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
 
         mFirebaseAuth = FirebaseAuth.getInstance();
         FacebookSdk.sdkInitialize(getApplicationContext());
@@ -64,12 +69,15 @@ public class LoginActivity extends AppCompatActivity {
         tabLayout = findViewById(R.id.tab_layout);
         viewPager = findViewById(R.id.view_pager);
         google = findViewById(R.id.fab_google);
+        //login
+        coreo = findViewById(R.id.correo);
+        pass = findViewById(R.id.contra);
         loginButton = findViewById(R.id.fab_facebook);
         loginButton.setReadPermissions("email","public_profile");
         tabLayout.addTab(tabLayout.newTab().setText("Ingresar"));
         tabLayout.addTab(tabLayout.newTab().setText("Registrar"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-        login = findViewById(R.id.login);
+        loginb = findViewById(R.id.login);
         final LoginAdapter adapter = new LoginAdapter(getSupportFragmentManager(),this, tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
@@ -125,6 +133,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         };
 
+        // login email
 
     }
     private void handleFacebookToken(AccessToken token){
@@ -171,5 +180,18 @@ public class LoginActivity extends AppCompatActivity {
             mFirebaseAuth.removeAuthStateListener(authStateListener);
 
         }
+    }
+    private void loginUser(){
+        mFirebaseAuth.signInWithEmailAndPassword(em,pa).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()){
+                    startActivity(new Intent(LoginActivity.this,OrganizacionActivity.class));
+                    finish();
+                }else{
+                    Toast.makeText(LoginActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 }

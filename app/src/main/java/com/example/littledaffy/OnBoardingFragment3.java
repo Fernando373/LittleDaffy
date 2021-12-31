@@ -25,7 +25,7 @@ public class OnBoardingFragment3 extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                Intent intent = new Intent(getActivity(), RegistroActivity.class);
                 startActivity(intent);
             }
         });

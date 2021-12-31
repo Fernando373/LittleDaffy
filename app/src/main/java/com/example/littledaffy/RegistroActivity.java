@@ -1,17 +1,14 @@
 package com.example.littledaffy;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -23,7 +20,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SignupTabFragment extends Fragment {
+public class RegistroActivity extends AppCompatActivity {
+
     private EditText nombres;
     private EditText apellidos;
     private EditText correo;
@@ -43,20 +41,21 @@ public class SignupTabFragment extends Fragment {
 
     FirebaseAuth mAuth;
     DatabaseReference mDatabse;
-    @Nullable
+    @Override
 
 
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.signup_tab_fragment, container, false);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_registro);
         mAuth = FirebaseAuth.getInstance();
         mDatabse = FirebaseDatabase.getInstance().getReference();
 
 
-        nombres = root.findViewById(R.id.nombre);
-        apellidos = root.findViewById(R.id.apellido);
-        correo =  root.findViewById(R.id.correo);
-        contraseña =  root.findViewById(R.id.contra);
-        registrar = root.findViewById(R.id.registrar);
+        nombres = findViewById(R.id.nombre);
+        apellidos = findViewById(R.id.apellido);
+        correo =  findViewById(R.id.correo);
+        contraseña =  findViewById(R.id.contra);
+        registrar = findViewById(R.id.registrar);
         registrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,8 +77,6 @@ public class SignupTabFragment extends Fragment {
 
             }
         });
-        return root;
-
     }
     private void registrarU(){
         mAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -102,11 +99,11 @@ public class SignupTabFragment extends Fragment {
                         @Override
                         public void onComplete(@NonNull Task<Void> task2) {
                             if (task2.isSuccessful()){
-                                startActivity(new Intent(SignupTabFragment.this.getContext(),OrganizacionActivity.class));
-                               
+                                startActivity(new Intent(RegistroActivity.this,OrganizacionActivity.class));
+                                finish();
                             }
                             else {
-                                Toast.makeText(SignupTabFragment.this.getContext(), "No se pudo registrar", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(RegistroActivity.this, "No se pudo registrar", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
