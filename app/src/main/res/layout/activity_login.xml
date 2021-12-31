@@ -40,7 +40,8 @@
             app:layout_constraintHeight_percent=".7"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tab_layout"
-            app:layout_constraintVertical_bias="0" />
+            app:layout_constraintVertical_bias="0"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab_layout"
@@ -50,7 +51,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0" />
+            app:layout_constraintVertical_bias="0"
+            tools:ignore="SpeakableTextPresentCheck" />
 
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -65,17 +67,20 @@
             app:layout_constraintHorizontal_bias="0.588"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view_pager"
-            app:layout_constraintVertical_bias="0.492" />
+            app:layout_constraintVertical_bias="0.492"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <com.facebook.login.widget.LoginButton
             android:id="@+id/fab_facebook"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:minHeight="48dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/fab_google"
             app:layout_constraintHorizontal_bias="0.85"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view_pager" />
+            app:layout_constraintTop_toBottomOf="@+id/view_pager"
+             />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView

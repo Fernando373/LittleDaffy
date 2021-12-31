@@ -47,8 +47,8 @@ public class IntroductoryActivity extends AppCompatActivity {
         anim = AnimationUtils.loadAnimation(this, R.anim.o_b_anim);
         viewPager.startAnimation(anim);
 
-        splashImg.animate().translationY(-3000).setDuration(4000).setStartDelay(6000);
-        logo.animate().translationX(-450).setDuration(4000).setStartDelay(6000);
+        splashImg.animate().translationY(-4000).setDuration(4000).setStartDelay(6000);
+        logo.animate().translationY(-450).setDuration(4000).setStartDelay(6000);
         lottieAnimationView.animate().translationY(2000).setDuration(4000).setStartDelay(6000);
 
         new Handler().postDelayed(new Runnable() {
@@ -65,7 +65,7 @@ public class IntroductoryActivity extends AppCompatActivity {
 
                 }
                 else {
-                    Intent intent = new Intent(IntroductoryActivity.this, OrganizacionActivity.class);
+                    Intent intent = new Intent(IntroductoryActivity.this, LoginActivity.class);
                     startActivity(intent);
                     finish();
                 }

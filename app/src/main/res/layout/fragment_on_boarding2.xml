@@ -69,7 +69,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="Encontrar a tu mascota perdida "
-        android:textSize="20sp"
+        android:textSize="17sp"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintVertical_bias="0"
         android:layout_marginTop="5dp"

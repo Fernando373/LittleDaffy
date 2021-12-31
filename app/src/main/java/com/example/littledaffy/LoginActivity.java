@@ -86,6 +86,7 @@ public class LoginActivity extends AppCompatActivity {
 
         mCallbackManager = CallbackManager.Factory.create();
 
+
         loginButton.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
@@ -123,6 +124,8 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         };
+
+
     }
     private void handleFacebookToken(AccessToken token){
         Log.d(TAG, "handleFacebookToken"+token);
