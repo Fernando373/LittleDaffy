@@ -72,6 +72,8 @@ public class VerOrganizacionesActivity extends AppCompatActivity implements OnMa
 
 	//ESTO ES SEGUNDA PRUEBA
 
+	//ESTO ES TERCERA PRUEBA
+
         //GOOGLE MAPS
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
